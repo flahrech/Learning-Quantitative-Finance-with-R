@@ -3,7 +3,7 @@
 ####
 # Simple linear regression
 
-Data = read.csv("C:/Users/prashant.vats/Desktop/Projects/BOOK R/Plots and Data/DataForRegression.csv")#not used in book
+Data = read.csv("C:/Users/prashant.vats/Desktop/Projects/BOOK R/Plots and Data/DataForMultipleRegression.csv")#not used in book
 head(Data)
 YPrice = Data$StockYPrice
 XPrice = Data$StockXPrice
@@ -51,6 +51,7 @@ predict(MultipleR.lm, newdata)
 
 summary(MultipleR.lm)$r.squared 
 summary(MultipleR.lm)$adj.r.squared 
+summary(MultipleR.lm)
 predict(MultipleR.lm, newdata, interval="confidence")
 
 library(car)
@@ -73,6 +74,9 @@ correlationMatrix
 MultipleR.lm = lm(StockYPrice ~ 
 StockX1Price + StockX2Price + StockX3Price + StockX4Price, 
 data=DataMR)
+
+install.packages("MASS")
+library(MASS)
 step <- stepAIC(MultipleR.lm, direction="both")
 step$anova 
 
